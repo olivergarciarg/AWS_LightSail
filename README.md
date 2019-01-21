@@ -1,6 +1,6 @@
 # Server information
-IP x.x.x.x
-URL x.x.x.x.xip.io
+IP 0.0.0.0
+URL 0.0.0.0.xip.io
 SSH port 2200
 # Third party software used
 Visual Studio Code for writing the code
@@ -14,9 +14,9 @@ Postgresql
 SqlAlchemy
 Flask
 finger
-# User ??? has password ???
-# DB user ??? has password ???
-# Project DB name is ???
+# User NEWUSER has password NEWUSERPASSWORD
+# DB user DBUSER has password DBUSERPASSWORD
+# Project DB name is catalog
 
 # SSH key file attached on zip file
 
@@ -56,12 +56,12 @@ sudo apt-get install libapache2-mod-wsgi
 sudo apt-get install postgresql
 # verify remote connections to postgresql are disabled
 sudo nano /etc/postgresql/9.5/main/pg_hba.conf
-# Create a PostgreSQL user called catalog
-sudo -u postgres createuser -P catalog
-# password for user catalog = catalog
+# Create a PostgreSQL user called DBUSER
+sudo -u postgres createuser -P DBUSER
+# password for user DBUSER = DBUSERPASSWORD
 # Create an empty database called catalog
-sudo -u postgres createdb -O catalog catalog
-# verify user and DB catalog
+sudo -u postgres createdb -O catalog DBUSER
+# verify user DBUSER and DB catalog
 sudo -u postgres psql
 \du
 \l
@@ -75,27 +75,27 @@ sudo pip install requests
 sudo pip install httplib2
 # install finger
 sudo apt-get install finger
-# add user grader, password grader
-sudo adduser grader
-# give sudo access to grader
-# add 'grader ALL=(ALL) NOPASSWD:ALL'
-sudo nano /etc/sudoers.d/grader
-# Set-up SSH keys for user grader
-sudo mkdir /home/grader/.ssh
-sudo chown grader:grader /home/grader/.ssh
-sudo chmod 700 /home/grader/.ssh
+# add user NEWUSER, password NEWUSERPASSWORD
+sudo adduser NEWUSER
+# give sudo access to NEWUSER
+# add 'NEWUSER ALL=(ALL) NOPASSWD:ALL'
+sudo nano /etc/sudoers.d/NEWUSER
+# Set-up SSH keys for user NEWUSER
+sudo mkdir /home/NEWUSER/.ssh
+sudo chown NEWUSER:NEWUSER /home/NEWUSER/.ssh
+sudo chmod 700 /home/NEWUSER/.ssh
 # copy ubuntu key
 cat .ssh/authorized_keys
 # create grader authorized_keys and paste ubuntu key
-sudo nano /home/grader/.ssh/authorized_keys
-sudo chown grader:grader /home/grader/.ssh/authorized_keys
-sudo chmod 644 /home/grader/.ssh/authorized_keys
+sudo nano /home/NEWUSER/.ssh/authorized_keys
+sudo chown NEWUSER:NEWUSER /home/NEWUSER/.ssh/authorized_keys
+sudo chmod 644 /home/NEWUSER/.ssh/authorized_keys
 
-# with user grader do
+# with user NEWUSER do
 sudo mkdir /var/www/catalog
-sudo chown grader:grader /var/www/catalog
+sudo chown NEWUSER:NEWUSER /var/www/catalog
 sudo mkdir /var/www/catalog/catalog
-sudo chown grader:grader /var/www/catalog/catalog
+sudo chown NEWUSER:NEWUSER /var/www/catalog/catalog
 # create catalog.wsgi
 sudo nano /var/www/catalog/catalog.wsgi
 # paste this into catalog.wsgi
@@ -116,8 +116,8 @@ python /var/www/catalog/catalog/lotsofsongs.py
 sudo nano /etc/apache2/sites-available/catalog.conf
 # with content
 <VirtualHost *:80>
-    ServerName x.x.x.x
-    ServerAdmin admin@x.x.x.x
+    ServerName 0.0.0.0
+    ServerAdmin admin@0.0.0.0
     WSGIDaemonProcess catalog user=www-data group=www-data threads=5
     WSGIProcessGroup catalog
     WSGIApplicationGroup %{GLOBAL}
@@ -149,9 +149,9 @@ Use Firefox version 56.0b9 or previous (fireftp is not supported in newer versio
 Go to https://addons.mozilla.org/en-US/firefox/addon/fireftp/ and add fireftp
 Open fireftp inside firefox and create new account
 Account name: any (doesn't matter)
-Host: x.x.x.x
-User: ???
-Password: ???
+Host: 0.0.0.0
+User: NEWUSER
+Password: NEWUSERPASSWORD
 In the tab "connection" select:
 Security = sftp
 Port = 2200
