@@ -105,7 +105,7 @@ sudo nano /var/www/catalog/catalog.wsgi
     logging.basicConfig(stream=sys.stderr)
     sys.path.insert(0,"/var/www/catalog/")
     from catalog import app as application
-    application.secret_key = 'super_secret_key'
+    application.secret_key = 'YOUR_SECRET_KEY'
 # copy via all project files and directories into /var/www/catalog/catalog via ftp
 # change origins and redirect URL in google credentials
 # change file's paths inside project code where needed
