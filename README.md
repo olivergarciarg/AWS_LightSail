@@ -14,9 +14,9 @@ Postgresql
 SqlAlchemy
 Flask
 finger
-# User grader has password grader
-# DB user catalog has password catalog
-# Project DB name is catalog
+# User ??? has password ???
+# DB user ??? has password ???
+# Project DB name is ???
 
 # SSH key file attached on zip file
 
